@@ -23,10 +23,11 @@ public static void main(String[] args) {
 				account.setName(arr[0]);
 				account.setPw(arr[1]);
 				account.setId(arr[2]);
-				account.setDeposit(arr[3]);
+				account.setMoney(arr[3]);
 				account.setSsn(arr[4]);
 				account.setAccountNumber(arr[5]);
 				account.setRegdate(service.getTodayTime());
+				service.createAccount(account);
 				JOptionPane.showMessageDialog(null, "계좌생성 완료 !");
 				break;
 			case "2": 
@@ -68,17 +69,16 @@ public static void main(String[] args) {
 				JOptionPane.showMessageDialog(null, "변경완료");
 				break;
 			case "6": 
-				service.deposit(JOptionPane.showInputDialog("입금액을 입력해주세요"));
+				service.deposit(JOptionPane.showInputDialog("계좌번호를 입력해주세요"),JOptionPane.showInputDialog("입금액을 입력해주세요"));
 				JOptionPane.showMessageDialog(null, "입금완료");
 				break;
 			case "7":
-				service.withdraw(JOptionPane.showInputDialog("출금액을 입력해주세요"));
+				service.withdraw(JOptionPane.showInputDialog("계좌번호를 입력해주세요"),JOptionPane.showInputDialog("출금액을 입력해주세요"));
 				break;
 			case "8": 
-				
+				service.deleteAccount(JOptionPane.showInputDialog("삭제하고자 하는 계좌번호를 입력해주세요"));
+				JOptionPane.showMessageDialog(null, "삭제완료");
 				break;
-				
-				
 			}
 		}
 	}

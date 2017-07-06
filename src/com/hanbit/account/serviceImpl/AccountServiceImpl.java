@@ -9,8 +9,8 @@ import com.hanbit.account.domain.AccountBean;
 import com.hanbit.account.service.AccountService;
 
 public class AccountServiceImpl implements AccountService{
-	List allAccount;
-	List someAccount;
+	List<AccountBean> allAccount;
+	List<AccountBean> someAccount;
 	AccountBean account;
 	public AccountServiceImpl() {
 		allAccount=new ArrayList<>();
@@ -18,45 +18,65 @@ public class AccountServiceImpl implements AccountService{
 		account=new AccountBean();
 	}
 	@Override
-	public void createAccount() {
-		// TODO Auto-generated method stub
-		
+	public void createAccount(AccountBean account) {
+		allAccount.add(account);
 	}
 
 	@Override
 	public List<AccountBean> AccountList() {
-		// TODO Auto-generated method stub
-		return null;
+		return allAccount;
 	}
 
 	@Override
 	public AccountBean findByAccount(String account) {
-		// TODO Auto-generated method stub
-		return null;
+		this.account=new AccountBean();
+		for(int i=0;i<allAccount.size();i++){
+			if(account.equals(allAccount.get(i).getAccountNumber())){
+				this.account=allAccount.get(i);
+				break;
+			}
+		}
+		return this.account;
 	}
 
 	@Override
 	public List<AccountBean> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		someAccount=new ArrayList<>();
+		for(int i=0;i<allAccount.size();i++){
+			if(name.equals(allAccount.get(i).getName())){
+				someAccount.add(allAccount.get(i));
+			}
+		}
+		return someAccount;
 	}
 
 	@Override
 	public void updatePw(AccountBean account) {
-		// TODO Auto-generated method stub
-		
+		for(int i=0;i<allAccount.size();i++){
+			if(account.getId().equals(allAccount.get(i).getId())){
+				allAccount.get(i).setPw(account.getPw());
+			}
+		}
 	}
 
 	@Override
-	public void deposit(String account) {
-		// TODO Auto-generated method stub
-		
+	public void deposit(String account,String deposit) {
+		for(int i=0;i<allAccount.size();i++){
+			if(account.equals(allAccount.get(i).getAccountNumber())){
+				allAccount.get(i).setMoney(String.valueOf(Integer.parseInt(allAccount.get(i).getMoney())+Integer.parseInt(deposit)));
+				break;
+			}
+		}
 	}
 
 	@Override
-	public void withdraw(String account) {
-		// TODO Auto-generated method stub
-		
+	public void withdraw(String account,String withdraw) {
+		for(int i=0;i<allAccount.size();i++){
+			if(account.equals(allAccount.get(i).getAccountNumber())){
+				allAccount.get(i).setMoney(String.valueOf(Integer.parseInt(allAccount.get(i).getMoney())-Integer.parseInt(withdraw)));
+				break;
+			}
+		}
 	}
 
 	@Override

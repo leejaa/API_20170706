@@ -1,7 +1,7 @@
 package com.hanbit.account.domain;
 
 public class AccountBean {
-	String name,pw,id,regdate,ssn,accountNumber,deposit;
+	String name,pw,id,regdate,ssn,accountNumber,money;
 	public void setName(String name){
 		this.name=name;
 	}
@@ -20,11 +20,11 @@ public class AccountBean {
 	public String getId(){
 		return id;
 	}
-	public void setDeposit(String deposit){
-		this.deposit=deposit;
+	public void setMoney(String deposit){
+		this.money=deposit;
 	}
-	public String getDeposit(){
-		return deposit;
+	public String getMoney(){
+		return money;
 	}
 	public void setRegdate(String regdate){
 		this.regdate=regdate;
