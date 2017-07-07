@@ -2,6 +2,7 @@ package com.hanbit.account.domain;
 
 public class AccountBean {
 	String name,pw,id,regdate,ssn,accountNumber,money;
+	static final String BANK="KB국민은행";
 	public void setName(String name){
 		this.name=name;
 	}
@@ -45,6 +46,6 @@ public class AccountBean {
 		return accountNumber;
 	}
 	public String toString(){
-		return "";
+		return String.format("%s||%s||%s||%s||%s||%s||%s\n", BANK,name,id,money,ssn,accountNumber,regdate);
 	}
 }

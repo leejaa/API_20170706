@@ -81,8 +81,12 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void deleteAccount(String account) {
-		// TODO Auto-generated method stub
-		
+		for(int i=0;i<allAccount.size();i++){
+			if(account.equals(allAccount.get(i).getAccountNumber())){
+				allAccount.remove(i);
+				break;
+			}
+		}
 	}
 	@Override
 	public String getTodayTime() {
